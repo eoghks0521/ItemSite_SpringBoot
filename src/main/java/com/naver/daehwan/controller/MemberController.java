@@ -3,6 +3,7 @@ package com.naver.daehwan.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -60,6 +61,7 @@ public class MemberController {
 
 	}
 
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/list")
 	public void list(Model model) throws Exception {
 		model.addAttribute("list", service.list());
@@ -76,6 +78,7 @@ public class MemberController {
 	}
 
 	// 삭제 처리
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("/remove")
 	public String remove(Long userNo, RedirectAttributes rttr) throws Exception {
 		service.remove(userNo);
@@ -99,5 +102,33 @@ public class MemberController {
 		service.modify(member);
 		rttr.addFlashAttribute("msg", "SUCCESS"); return "redirect:/user/list";
 	}
+	
+	//admin 권한을 가진 최초관리자 생성
+	@GetMapping("/setup")
+	public String setupAdminForm(Member member, Model model) throws Exception{
+		if(service.countAll()==0) {
+			return "user.setup";
+		}
+		
+		return "user/setupFailure";
+	}
+	@PostMapping("/setup")
+	public String setupAdmin(Member member, RedirectAttributes rttr) throws Exception{
+		if(service.countAll()==0) {
+			String inputPassword = member.getUserPw();
+			member.setUserPw(passwordEncoder.encode(inputPassword));
+			
+			member.setJob("00");
+			
+			service.setupAdmin(member);
+			
+			rttr.addFlashAttribute("userName",member.getUserName());
+			return "redirect:/user/registerSuccess";
+			
+		}
+		
+		return "regirect:/user/setupFailure";
+	}
+	
 	
 }
