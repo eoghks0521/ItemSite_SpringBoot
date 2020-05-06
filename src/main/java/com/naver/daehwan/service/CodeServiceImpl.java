@@ -9,7 +9,9 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.naver.daehwan.dto.CodeLabelValue;
+import com.naver.daehwan.model.CodeDetail;
 import com.naver.daehwan.model.CodeGroup;
+import com.naver.daehwan.repo.CodeDetailRepository;
 import com.naver.daehwan.repo.CodeGroupRepository;
 
 @Service
@@ -17,6 +19,8 @@ public class CodeServiceImpl implements CodeService {
 
 	@Autowired
 	CodeGroupRepository repository;
+	@Autowired
+	CodeDetailRepository detail_repository;
 
 	@Override
 	public List<CodeLabelValue> getCodeGroupList() throws Exception {
@@ -29,6 +33,18 @@ public class CodeServiceImpl implements CodeService {
 		}
 
 		return codeGroupList;
+	}
+
+	@Override
+	public List<CodeLabelValue> getCodeList(String classCode) throws Exception {
+		List<CodeDetail> details = detail_repository.findByGroupCode(classCode);
+		List<CodeLabelValue> codeList = new ArrayList<>();
+		
+		for (CodeDetail detail : details) {
+			codeList.add(new CodeLabelValue(detail.getCodeValue(), detail.getCodeName()));
+		}
+
+		return codeList;
 	}
 
 }

@@ -34,7 +34,7 @@ public class CodeGroup {
 	 String groupName;
 	 
 	 @Column(length=1)
-	 String useTn="Y";
+	 String useYn="Y";
 	 
 	 @CreationTimestamp
 	 Date regDate;

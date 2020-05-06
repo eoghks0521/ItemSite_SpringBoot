@@ -38,7 +38,7 @@ public class CodeDetailServiceImpl implements CodeDetailService {
 				maxSortSeq = (Integer) maxValues[0];
 			}
 		}
-		codeDetail.setSorSeq(maxSortSeq + 1);
+		codeDetail.setSortSeq(maxSortSeq + 1);
 		repository.save(codeDetail);
 	}
 

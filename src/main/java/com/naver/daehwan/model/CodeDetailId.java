@@ -14,7 +14,6 @@ import lombok.ToString;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 @ToString
 public class CodeDetailId implements Serializable{
 	

@@ -4,14 +4,14 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -19,32 +19,23 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@EqualsAndHashCode(of= {"groupCode","codeValue"})
 @Entity
-@IdClass(CodeDetailId.class)
-@Table(name="code_detail")
-public class CodeDetail {
-	
+@Table(name = "member_auth")
+public class MemberAuth {
+
 	@Id
-	@Column(length=3)
-	String groupCode;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	Long userAuthNo;
+
+	@Column(name = "user_no")
+	Long userNo;
 	
-	@Id
-	@Column(length=3)
-	String codeValue;
+	@Column(length = 50)
+	String auth;
 	
-	@Column(length=30, nullable = false)
-	String codeName;
-	
-	
-	int sortSeq;
-	
-	@Column(length=1)
-	String useYn = "Y";
-			
 	@CreationTimestamp
 	Date regDate;
-			
+	
 	@UpdateTimestamp
 	Date updDate;
 
