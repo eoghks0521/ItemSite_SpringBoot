@@ -107,7 +107,7 @@ public class MemberController {
 	@GetMapping("/setup")
 	public String setupAdminForm(Member member, Model model) throws Exception{
 		if(service.countAll()==0) {
-			return "user.setup";
+			return "user/setup";
 		}
 		
 		return "user/setupFailure";
