@@ -96,7 +96,7 @@ public class MemberController {
 		model.addAttribute(service.read(userNo));
 	}
 
-	// 수정 처리 
+	// 수정 처리
 	@PostMapping("/modify")
 	public String modify(Member member, RedirectAttributes rttr) throws Exception {
 		service.modify(member);

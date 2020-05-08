@@ -13,9 +13,12 @@
 		<h2 th:text="#{board.header.read}">회원게시판 상세보기</h2>
 		<form id="board" action="list.html" th:action="@{/board/remove}"
 			th:object="${board}" method="POST">
-			<input type="hidden" name="boardNo" th:field="*{boardNo}" /> 
-			<input type="hidden" name="page" th:value="${pgrq.page}" />
-			<input type="hidden" name="sizePerPage" th:value="${pgrq.sizePerPage}" />
+			<input type="hidden" name="boardNo" th:field="*{boardNo}" /> <input
+				type="hidden" name="page" th:value="${pgrq.page}" /> <input
+				type="hidden" name="sizePerPage" th:value="${pgrq.sizePerPage}" />
+
+			<input type="hidden" name="searchType" th:value="${pgrq.searchType}" />
+			<input type="hidden" name="keyword" th:value="${pgrq.keyword}"/>
 			<table>
 				<tr>
 					<td th:text="#{board.title}">제목</td>
@@ -50,24 +53,35 @@
 		</div>
 
 		<script>
-			$(document).ready(function() {
-				var formObj = $("#board");
-				$("#btnEdit").on("click", function() {
-					var boardNo = $("#boardNo");
-					var boardNoVal = boardNo.val();
-					
-				    self.location = "/board/modify[(${pgrq.toUriString()})]" + "&boardNo=" + boardNoVal;
-					//self.location = "/board/modify?boardNo=" + boardNoVal;
-				});
-				$("#btnRemove").on("click", function() {
-					formObj.attr("action", "/board/remove");
-					formObj.submit();
-				});
-				$("#btnList").on("click", function() {
-					//self.location = "/board/list";
-					self.location = "/board/list[(${pgrq.toUriString()})]";
-				});
-			});
+			$(document)
+					.ready(
+							function() {
+								var formObj = $("#board");
+								$("#btnEdit")
+										.on(
+												"click",
+												function() {
+													var boardNo = $("#boardNo");
+													var boardNoVal = boardNo
+															.val();
+
+													self.location = "/board/modify[(${pgrq.toUriString()})]"
+															+ "&boardNo="
+															+ boardNoVal;
+													//self.location = "/board/modify?boardNo=" + boardNoVal;
+												});
+								$("#btnRemove").on("click", function() {
+									formObj.attr("action", "/board/remove");
+									formObj.submit();
+								});
+								$("#btnList")
+										.on(
+												"click",
+												function() {
+													//self.location = "/board/list";
+													self.location = "/board/list[(${pgrq.toUriString()})]";
+												});
+							});
 		</script>
 	</div>
 </body>
