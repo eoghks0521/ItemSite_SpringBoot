@@ -31,7 +31,7 @@ public class CodeGroupController {
 	public String register(CodeGroup codeGroup, RedirectAttributes rttr) throws Exception{
 		service.register(codeGroup);
 		
-		rttr.addFlashAttribute("msg","Success");
+		rttr.addFlashAttribute("msg","SUCCESS");
 		return "redirect:/codegroup/list";
 	}
 	
@@ -48,7 +48,7 @@ public class CodeGroupController {
 	@PostMapping("/modify")
 	public String modify(CodeGroup codeGroup, RedirectAttributes rttr) throws Exception{
 		service.modify(codeGroup);
-		rttr.addFlashAttribute("msg","Success");
+		rttr.addFlashAttribute("msg","SUCCESS");
 		
 		return "redirect:/codegroup/list";
 	}
@@ -58,7 +58,7 @@ public class CodeGroupController {
 		
 		service.remove(groupCode);
 		
-		rttr.addFlashAttribute("msg", "success");
+		rttr.addFlashAttribute("msg", "SUCCESS");
 		
 		return "redirect:/codegroup/list";
 	}

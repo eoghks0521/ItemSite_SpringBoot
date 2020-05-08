@@ -39,7 +39,7 @@ public class MemberController {
 
 	@PostMapping("/register")
 	public String register(@Validated Member member, BindingResult result, Model model, RedirectAttributes rttr)
-			throws Exception {
+		throws Exception {
 		if (result.hasErrors()) {
 			String classCode = "A01";
 			List<CodeLabelValue> jobList = codeService.getCodeList(classCode);
@@ -90,45 +90,46 @@ public class MemberController {
 	// 수정 화면
 	@GetMapping("/modify")
 	public void modifyForm(Long userNo, Model model) throws Exception {
-		 String classCode = "A01"; 
-		 List<CodeLabelValue> jobList = codeService.getCodeList(classCode);
-		 model.addAttribute("jobList", jobList);
-		 model.addAttribute(service.read(userNo)); 
+		String classCode = "A01";
+		List<CodeLabelValue> jobList = codeService.getCodeList(classCode);
+		model.addAttribute("jobList", jobList);
+		model.addAttribute(service.read(userNo));
 	}
 
 	// 수정 처리 
 	@PostMapping("/modify")
-	public String modify(Member member, RedirectAttributes rttr) throws Exception { 
+	public String modify(Member member, RedirectAttributes rttr) throws Exception {
 		service.modify(member);
-		rttr.addFlashAttribute("msg", "SUCCESS"); return "redirect:/user/list";
+		rttr.addFlashAttribute("msg", "SUCCESS");
+		return "redirect:/user/list";
 	}
-	
+
 	//admin 권한을 가진 최초관리자 생성
 	@GetMapping("/setup")
-	public String setupAdminForm(Member member, Model model) throws Exception{
-		if(service.countAll()==0) {
+	public String setupAdminForm(Member member, Model model) throws Exception {
+		if (service.countAll() == 0) {
 			return "user/setup";
 		}
-		
+
 		return "user/setupFailure";
 	}
+
 	@PostMapping("/setup")
-	public String setupAdmin(Member member, RedirectAttributes rttr) throws Exception{
-		if(service.countAll()==0) {
+	public String setupAdmin(Member member, RedirectAttributes rttr) throws Exception {
+		if (service.countAll() == 0) {
 			String inputPassword = member.getUserPw();
 			member.setUserPw(passwordEncoder.encode(inputPassword));
-			
+
 			member.setJob("00");
-			
+
 			service.setupAdmin(member);
-			
-			rttr.addFlashAttribute("userName",member.getUserName());
+
+			rttr.addFlashAttribute("userName", member.getUserName());
 			return "redirect:/user/registerSuccess";
-			
+
 		}
-		
+
 		return "regirect:/user/setupFailure";
 	}
-	
-	
+
 }

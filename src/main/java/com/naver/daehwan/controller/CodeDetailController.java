@@ -40,7 +40,7 @@ public class CodeDetailController {
 	public String register(CodeDetail codeDetail, RedirectAttributes rttr) throws Exception {
 		codeDetailService.register(codeDetail);
 
-		rttr.addFlashAttribute("msg", "Success");
+		rttr.addFlashAttribute("msg", "SUCCESS");
 		return "redirect:/codedetail/list";
 	}
 
@@ -61,7 +61,7 @@ public class CodeDetailController {
 	public String modifyForm(CodeDetail codeDetail, RedirectAttributes rttr) throws Exception {
 
 		codeDetailService.modify(codeDetail);
-		rttr.addFlashAttribute("msg", "Success");
+		rttr.addFlashAttribute("msg", "SUCCESS");
 
 		return "redirect:/codedetail/list";
 	}
