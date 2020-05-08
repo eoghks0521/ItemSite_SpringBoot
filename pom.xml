@@ -93,6 +93,14 @@
 			<artifactId>thymeleaf-layout-dialect</artifactId>
 		</dependency>
 
+		<!--파일을 처리하기 위한 의존 라이브러리 -->
+		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.6</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>
@@ -119,7 +127,7 @@
 					</execution>
 				</executions>
 			</plugin>
-		
+
 		</plugins>
 	</build>
 
