@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.naver.daehwan.model.CustomUser;
+import com.naver.daehwan.common.security.domain.CustomUser;
 import com.naver.daehwan.model.Member;
 import com.naver.daehwan.model.UserItem;
 import com.naver.daehwan.service.UserItemService;

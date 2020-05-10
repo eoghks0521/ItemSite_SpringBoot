@@ -1,4 +1,4 @@
-package com.naver.daehwan.config;
+package com.naver.daehwan.common.security;
 
 import java.io.IOException;
 

@@ -18,6 +18,10 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
+import com.naver.daehwan.common.security.CustomAccessDeniedHandler;
+import com.naver.daehwan.common.security.CustomLoginSuccessHandler;
+import com.naver.daehwan.common.security.CustomUserDetailsService;
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)

@@ -1,4 +1,4 @@
-package com.naver.daehwan.config;
+package com.naver.daehwan.common.security;
 
 import java.io.IOException;
 
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 
-import com.naver.daehwan.model.CustomUser;
+import com.naver.daehwan.common.security.domain.CustomUser;
 import com.naver.daehwan.model.Member;
 
 import lombok.extern.java.Log;

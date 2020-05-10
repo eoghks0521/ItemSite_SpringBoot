@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.naver.daehwan.model.CustomUser;
+import com.naver.daehwan.common.security.domain.CustomUser;
 import com.naver.daehwan.model.Item;
 import com.naver.daehwan.model.Member;
 import com.naver.daehwan.service.ItemService;

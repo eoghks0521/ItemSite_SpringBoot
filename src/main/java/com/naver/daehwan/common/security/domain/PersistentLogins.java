@@ -1,4 +1,4 @@
-package com.naver.daehwan.model;
+package com.naver.daehwan.common.security.domain;
 
 
 import java.sql.Timestamp;

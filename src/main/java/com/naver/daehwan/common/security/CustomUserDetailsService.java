@@ -1,11 +1,11 @@
-package com.naver.daehwan.config;
+package com.naver.daehwan.common.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import com.naver.daehwan.model.CustomUser;
+import com.naver.daehwan.common.security.domain.CustomUser;
 import com.naver.daehwan.model.Member;
 import com.naver.daehwan.repo.MemberRepository;
 

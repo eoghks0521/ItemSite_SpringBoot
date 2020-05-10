@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.naver.daehwan.common.security.domain.CustomUser;
 import com.naver.daehwan.dto.CodeLabelValue;
 import com.naver.daehwan.dto.PaginationDTO;
 import com.naver.daehwan.model.Board;
-import com.naver.daehwan.model.CustomUser;
 import com.naver.daehwan.model.Member;
 import com.naver.daehwan.service.BoardService;
 import com.naver.daehwan.vo.PageRequestVO;
