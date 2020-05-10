@@ -17,8 +17,10 @@ public interface MemberService {
 
 	// 목록 화면
 	public List<Member> list() throws Exception;
-	
+
 	public long countAll() throws Exception;
 
 	public void setupAdmin(Member member) throws Exception;
+
+	public int getCoin(Long userNo) throws Exception;
 }

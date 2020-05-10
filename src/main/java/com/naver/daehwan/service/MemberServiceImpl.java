@@ -50,7 +50,7 @@ public class MemberServiceImpl implements MemberService {
 			if (i < memberAuthList.size()) {
 				MemberAuth memberAuth = memberAuthList.get(i);
 				memberAuth.setAuth(auth.getAuth());
-			}else {
+			} else {
 				memberEntity.addAuth(auth);
 			}
 		}
@@ -69,23 +69,23 @@ public class MemberServiceImpl implements MemberService {
 		List<Member> memberList = new ArrayList<Member>();
 		for (Object[] valueArray : valueArrays) {
 			Member member = new Member();
-			member.setUserNo((Long) valueArray[0]);
-			member.setUserId((String) valueArray[1]);
-			member.setUserPw((String) valueArray[2]);
-			member.setUserName((String) valueArray[3]);
-			member.setJob((String) valueArray[4]);
-			member.setCoin((int) valueArray[5]);
-			member.setRegDate((Date) valueArray[6]);
+			member.setUserNo((Long)valueArray[0]);
+			member.setUserId((String)valueArray[1]);
+			member.setUserPw((String)valueArray[2]);
+			member.setUserName((String)valueArray[3]);
+			member.setJob((String)valueArray[4]);
+			member.setCoin((int)valueArray[5]);
+			member.setRegDate((Date)valueArray[6]);
 			memberList.add(member);
 		}
 		return memberList;
 	}
-	
+
 	@Override
 	public long countAll() throws Exception {
 		return repository.count();
 	}
-	
+
 	@Override
 	public void setupAdmin(Member member) throws Exception {
 		Member memberEntity = new Member();
@@ -93,13 +93,20 @@ public class MemberServiceImpl implements MemberService {
 		memberEntity.setUserPw(member.getUserPw());
 		memberEntity.setUserName(member.getUserName());
 		memberEntity.setJob(member.getJob());
-		
+
 		MemberAuth memberAuth = new MemberAuth();
 		memberAuth.setAuth("ROLE_ADMIN");
-		
+
 		memberEntity.addAuth(memberAuth);
-		
+
 		repository.save(memberEntity);
-		
+
+	}
+
+	@Override
+	public int getCoin(Long userNo) throws Exception {
+		Member member = repository.getOne(userNo);
+
+		return member.getCoin();
 	}
 }
